@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="app.css" />
+    <title>Puzzle Cheater</title>
+</head>
+
+<body>
+    <div id="heading">
+        <h1>Puzzle Cheater</h1>
+        <p>Shhh... we won't tell anyone</p>
+    </div>
+    <p id="instructions">
+        Upload an image of your puzzle piece and the image of the completed puzzle (on the box), and we will see if we can find its location for you.
+    </p>
+    <form method="post" action="/" enctype="multipart/form-data">
+        <div class="uploads-container">
+            <div class="uploads-item">
+                <h2>Puzzle Piece:</h2>
+                <input type="file" name="piece-file" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="uploads-item" id="board-upload">
+                <h2>Completed puzzle:</h2>
+                <input type="file" name="board-file" class="form-control" autocomplete="off" required>
+            </div>
+        </div>
+        <input type="submit" value="Submit" class="btn">
+    </form>
+    {% if image %}
+        <div id="solution-field">
+            <h2>Solution:</h2>
+            <img src="data:image/jpeg;base64,{{ image }}">
+            <h3>Seem incorrect? Try taking photos against a dark background and cropping your box to just have the board image in it.</h3>
+        </div>
+    {% endif %}
+</body>
+
+</html>
