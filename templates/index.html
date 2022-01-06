@@ -4,9 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="app.css" />
     <title>Puzzle Cheater</title>
 </head>
+
+<style>
+    .solution-image { width: 50vw; }
+</style>
+
 
 <body>
     <div id="heading">
@@ -32,7 +36,7 @@
     {% if image %}
         <div id="solution-field">
             <h2>Solution:</h2>
-            <img src="data:image/jpeg;base64,{{ image }}">
+            <img class="solution-image" src="data:image/jpeg;base64,{{ image }}">
             <h3>Seem incorrect? Try taking photos against a dark background and cropping your box to just have the board image in it.</h3>
         </div>
     {% endif %}
