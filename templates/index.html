@@ -8,38 +8,61 @@
 </head>
 
 <style>
-    .solution-image { width: 50vw; }
+    body { background-color: #eaffff; text-align: center; }
+
+    .solution-image {
+        width: 50vw;
+    }
+
+    .container {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .uploads-container {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+    }
+
+    .uploads-item { border-width: 1px; border-radius: 3%; border-style: solid; margin: 1rem; }
+    .submit-container { margin: auto; padding-top: 1rem; }
 </style>
 
 
 <body>
-    <div id="heading">
-        <h1>Puzzle Cheater</h1>
-        <p>Shhh... we won't tell anyone</p>
-    </div>
-    <p id="instructions">
-        Upload an image of your puzzle piece and the image of the completed puzzle (on the box), and we will see if we can find its location for you.
-    </p>
-    <form method="post" action="/" enctype="multipart/form-data">
-        <div class="uploads-container">
-            <div class="uploads-item">
-                <h2>Puzzle Piece:</h2>
-                <input type="file" name="piece-file" class="form-control" autocomplete="off" required>
-            </div>
-            <div class="uploads-item" id="board-upload">
-                <h2>Completed puzzle:</h2>
-                <input type="file" name="board-file" class="form-control" autocomplete="off" required>
-            </div>
+    <div class="container">
+        <div id="heading">
+            <h1>Puzzle Cheater</h1>
+            <p>Shhh... we won't tell anyone</p>
         </div>
-        <input type="submit" value="Submit" class="btn">
-    </form>
-    {% if image %}
+        <p id="instructions">
+            Upload an image of your puzzle piece and the image of the completed puzzle (on the box), and we will see if
+            we can find its location for you.
+        </p>
+        <form method="post" action="/" enctype="multipart/form-data">
+            <div class="uploads-container">
+                <div class="uploads-item">
+                    <h2>Puzzle Piece:</h2>
+                    <input type="file" name="piece-file" class="form-control" autocomplete="off" required>
+                </div>
+                <div class="uploads-item" id="board-upload">
+                    <h2>Completed puzzle:</h2>
+                    <input type="file" name="board-file" class="form-control" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="submit-container"><input type="submit" value="Submit" class="submit-btn"></div>
+        </form>
+        {% if image %}
         <div id="solution-field">
             <h2>Solution:</h2>
             <img class="solution-image" src="data:image/jpeg;base64,{{ image }}">
-            <h3>Seem incorrect? Try taking photos against a dark background and cropping your box to just have the board image in it.</h3>
+            <h3>Seem incorrect? Try taking photos against piece of paper for contrast </h3>
         </div>
-    {% endif %}
+        {% endif %}
+    </div>
 </body>
 
 </html>

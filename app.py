@@ -40,6 +40,7 @@ def upload_files():
         except ValueError:
             return redirect(request.url)
         
+        # convert image to html code 
         solution_image = visual_match.match(piece_file, board_file)
         solution_image = Image.fromarray(solution_image)
         data_buffer = io.BytesIO()
